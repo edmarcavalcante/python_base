@@ -33,26 +33,31 @@ if len(arguments) != 3:
     print(f"Number of arguments incorrect. You need to pass three.")
     sys.exit(1)
 
-operation = arguments[0]
+
+operation, n1, n2 = arguments #desempacotamento
 
 if operation not in ["sum","sub", "mul", "div"]:
     print(f"The first argument is invalid!\nChoose one of these: sum, sub, mul, div")
     sys.exit(1)
 
 # TODO: CRIATE A VALIDATE NUMBER isdigit() 
-try:
-    n1 = int(arguments[1])
-except:
-    IndexError
-    n1 = int(input(f"Type a number: "))
 
-try:
-    n2 = int(arguments[2])
-except:
-    IndexError
-    n2 = int(input(f"Type a second number: "))
+validated_number = arguments[1:]
 
+number_valided = []
 
+for num in validated_number:
+
+    if not num.replace(".", "").isdigit():
+        print(f"Number invalided: {num}")
+        sys.exit(1)
+    if "." in num:
+        num = float(num)
+    else:
+        num = int(num)
+    number_valided.append(num)
+
+n1, n2 = number_valided
 
 calc = {
     "sum": n1 + n2,
