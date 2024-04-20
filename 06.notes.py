@@ -32,7 +32,7 @@ if arguments[0] not in cmds:
     print("Argument invalid")
     sys.exit(1)
 
-if arguments[1] == "new":
+if arguments[0].lower == "new":
     title = arguments[1]
     text = [
         f"{title}",
