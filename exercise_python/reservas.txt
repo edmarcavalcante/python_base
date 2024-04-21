@@ -1,1 +1,4 @@
-# Cliente, quarto, dias 
+Edmar,2,3,
+Maria,3,5,
+Maria,3,3,
+kiki,1,5,

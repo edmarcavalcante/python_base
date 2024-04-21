@@ -1,4 +1,3 @@
-# Codigo, nome, preco
 1,Suite Master,500
 2,Quarto Familia,200
 3,Quarto Single,100
