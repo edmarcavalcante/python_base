@@ -19,7 +19,7 @@ path = os.curdir
 filepath = os.path.join(path, "notes.txt")
 
 arguments = sys.argv[1:]
-
+print(arguments)
 # valid command
 cmds = ("read", "new")
 
@@ -30,10 +30,15 @@ if not arguments:
 
 if arguments[0] not in cmds:
     print("Argument invalid")
-    sys.exit(1)
-
-if arguments[0].lower == "new":
-    title = arguments[1]
+    #sys.exit(1)
+print(arguments[0])
+if arguments[0] == "new":
+    try:
+        print("Dentro do loop")
+        title = arguments[1]
+    except IndexError as e:
+        print(str(e))
+        title = input("Type the title: ")
     text = [
         f"{title}",
         input("tag:").strip(),
@@ -46,8 +51,13 @@ if arguments[0] == "read":
     #leitura de notas
     for line in open(filepath):
         title, tag, text = line.split("\t")
-        if tag.lower() == arguments[1].lower():
-            print(f"title: {title}")
-            print(f"text: {text}")
-            print("-"*30)
-            print()
+        #TODO: fazer um try/except para verificar se já existe a tag no bloco de notas 
+        try:
+            if tag.strip().lower() == arguments[1].lower():
+                print(f"title: {title}")
+                print(f"text: {text}")
+                print("-"*30)
+                print()
+        except IndexError as e:
+            print(str(e))
+
